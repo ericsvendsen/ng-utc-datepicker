@@ -1,0 +1,77 @@
+.date-picker {
+    position: relative;
+}
+.date-picker .calendar-icon {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    cursor: pointer;
+}
+.date-picker .calendar-popup {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    width: 245px;
+    opacity: 0.9;
+}
+.date-picker .calendar-popup.above {
+    top: -228px;
+}
+.date-picker .calendar-popup.below {
+    top: 28px;
+}
+.date-picker .calendar-popup .calendar-controls {
+    background: #ccc;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+.date-picker .calendar-popup .calendar-controls .prev,
+.date-picker .calendar-popup .calendar-controls .next,
+.date-picker .calendar-popup .calendar-controls .today {
+    cursor: pointer;
+    padding: 0 7px;
+}
+.date-picker .calendar-popup .day-names {
+    background: #555;
+    display: flex;
+}
+.date-picker .calendar-popup .day-names .name {
+    width: 35px;
+    height: 15px;
+    padding: 1px;
+    text-align: center;
+}
+.date-picker .calendar-popup .calendar {
+    background: #fff;
+}
+.date-picker .calendar-popup .calendar .day {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    float: left;
+    padding: 2px;
+    border-right: 1px solid #888;
+    border-bottom: 1px solid #888;
+    color: #000;
+    background: #fff;
+}
+.date-picker .calendar-popup .calendar .day:hover {
+    background: #ccc;
+    color: #000;
+    cursor: pointer;
+}
+.date-picker .calendar-popup .calendar .day:last-child {
+    border-right: 1px solid #555;
+}
+.date-picker .calendar-popup .calendar .selected {
+    background: #42a5f5;
+    color: #fff;
+}
+.date-picker .calendar-popup .calendar .disabled {
+    background: #ddd;
+    color: #555;
+}
