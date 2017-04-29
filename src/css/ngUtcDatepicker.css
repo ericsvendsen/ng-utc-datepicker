@@ -1,10 +1,8 @@
 .date-picker {
     position: relative;
+    display: flex;
 }
 .date-picker .calendar-icon {
-    position: absolute;
-    top: 7px;
-    left: 0;
     cursor: pointer;
 }
 .date-picker .calendar-popup {
@@ -13,19 +11,23 @@
     z-index: 1000;
     width: 245px;
     opacity: 0.9;
+    border-left: 1px solid #888;
 }
 .date-picker .calendar-popup.above {
     top: -228px;
 }
 .date-picker .calendar-popup.below {
-    top: 28px;
+    top: 8px;
 }
 .date-picker .calendar-popup .calendar-controls {
+    box-sizing: border-box;
     background: #ccc;
     width: 100%;
-    padding: 5px;
+    padding: 5px 0;
     text-align: center;
     color: #000;
+    border-top: 1px solid #888;
+    border-right: 1px solid #888;
     display: flex;
     justify-content: space-between;
 }
@@ -37,7 +39,9 @@
 }
 .date-picker .calendar-popup .day-names {
     background: #555;
+    color: #fff;
     display: flex;
+    border-right: 1px solid #888;
 }
 .date-picker .calendar-popup .day-names .name {
     width: 35px;
@@ -49,6 +53,7 @@
     background: #fff;
 }
 .date-picker .calendar-popup .calendar .day {
+    box-sizing: border-box;
     width: 35px;
     height: 35px;
     display: inline-block;
@@ -65,7 +70,7 @@
     cursor: pointer;
 }
 .date-picker .calendar-popup .calendar .day:last-child {
-    border-right: 1px solid #555;
+    border-right: 1px solid #888;
 }
 .date-picker .calendar-popup .calendar .selected {
     background: #42a5f5;

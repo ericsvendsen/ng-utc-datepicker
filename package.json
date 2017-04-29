@@ -1,0 +1,24 @@
+{
+  "name": "ng-utc-datepicker",
+  "version": "1.0.0",
+  "description": "A simple Angular 1.x datepicker directive that exclusively uses UTC",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericsvendsen/ng-utc-datepicker.git"
+  },
+  "author": "ericsvendsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ericsvendsen/ng-utc-datepicker/issues"
+  },
+  "homepage": "https://github.com/ericsvendsen/ng-utc-datepicker#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.18.1"
+  }
+}
