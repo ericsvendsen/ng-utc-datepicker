@@ -1,6 +1,6 @@
 {
   "name": "ng-utc-datepicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Angular 1.x datepicker directive that exclusively uses UTC",
   "main": "",
   "scripts": {
