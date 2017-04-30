@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular UTC Datepicker</title>
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="src/css/ngUtcDatepicker.css"/>
+</head>
+<body ng-app="app" ng-strict-di>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div ng-controller="ctrl as vm">
+    <span id="icon" class="fa fa-calendar"></span>
+    <input ng-utc-datepicker data-trigger="icon" ng-model="vm.date"/>
+</div>
+
+<script type="text/javascript" src="node_modules/moment/moment.js"></script>
+<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="src/js/ngUtcDatepicker.js"></script>
+<script type="text/javascript">
+    (function (angular) {
+        'use strict';
+
+        var app = angular.module('app', ['es.ngUtcDatepicker']);
+
+        angular.module('app')
+            .controller('ctrl', [function () {
+                var vm = this;
+                vm.date = new Date();
+            }]);
+    })(window.angular);
+
+</script>
+</body>
+</html>

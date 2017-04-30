@@ -1,6 +1,5 @@
 .date-picker {
     position: relative;
-    display: flex;
 }
 .date-picker .calendar-icon {
     cursor: pointer;
@@ -14,7 +13,7 @@
     border-left: 1px solid #888;
 }
 .date-picker .calendar-popup.above {
-    top: -228px;
+    top: -248px;
 }
 .date-picker .calendar-popup.below {
     top: 8px;
@@ -41,7 +40,6 @@
     background: #555;
     color: #fff;
     display: flex;
-    border-right: 1px solid #888;
 }
 .date-picker .calendar-popup .day-names .name {
     width: 35px;
