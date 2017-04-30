@@ -1,5 +1,12 @@
 # Angular UTC Datepicker
 A simple Angular 1.x datepicker directive that exclusively uses UTC.
+## Install
+* npm: `npm install --save ng-utc-datepicker`
+* bower: `bower install --save ng-utc-datepicker`
+## Dependencies
+* Angular 1.x
+* MomentJS
+* Font Awesome
 ## How to use
 * Inject `'es.ngUtcDatepicker'` into your app
 * Add `ng-utc-datepicker` to an `input` tag
