@@ -40,18 +40,18 @@
                         });
                     });
                 },
-                template: '<script type="text/ng-template" id="ngUtcDatepicker.html"><div class="date-picker">' +
-                '<div class="calendar-popup" ng-class="ctrl.calendarPosition" ng-show="ctrl.showCalendar" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)" tabindex="-1">' +
-                '<div class="calendar-controls">' +
-                '<div class="prev" ng-click="ctrl.prevMonth()" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)"><i class="fa fa-arrow-left"></i></div>' +
-                '<div class="title">{{ ctrl.calendarTitle }} <span class="today" title="Today" ng-click="ctrl.selectToday($event)" ng-keydown="ctrl.keydown($event)"><i class="fa fa-calendar-o"></i></span></div>' +
-                '<div class="next" ng-click="ctrl.nextMonth()" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)"><i class="fa fa-arrow-right"></i></div>' +
+                template: '<script type="text/ng-template" id="ngUtcDatepicker.html"><div class="ng-utc_datepicker">' +
+                '<div class="ng-utc_calendar-popup" ng-class="ctrl.calendarPosition" ng-show="ctrl.showCalendar" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)" tabindex="0">' +
+                '<div class="ng-utc_calendar-controls">' +
+                '<div class="ng-utc_prev" ng-click="ctrl.prevMonth()" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)"><i class="fa fa-arrow-left"></i></div>' +
+                '<div class="ng-utc_title">{{ ctrl.calendarTitle }} <span class="ng-utc_today" title="Today" ng-click="ctrl.selectToday($event)" ng-keydown="ctrl.keydown($event)"><i class="fa fa-calendar-o"></i></span></div>' +
+                '<div class="ng-utc_next" ng-click="ctrl.nextMonth()" ng-blur="ctrl.closeCalendar()" ng-keydown="ctrl.keydown($event)"><i class="fa fa-arrow-right"></i></div>' +
                 '</div>' +
-                '<div class="day-names">' +
-                '<div class="name" ng-repeat="name in ctrl.dayNames">{{ name }}</div>' +
+                '<div class="ng-utc_day-names">' +
+                '<div class="ng-utc_name" ng-repeat="name in ctrl.dayNames">{{ name }}</div>' +
                 '</div>' +
-                '<div class="calendar">' +
-                '<div class="day {{ day.selected }} {{ day.enabled }}" ng-repeat="day in ctrl.days" ng-click="ctrl.selectDate(day)">{{ day.day }}</div>' +
+                '<div class="ng-utc_calendar">' +
+                '<div class="ng-utc_day {{ day.selected }} {{ day.enabled }}" ng-repeat="day in ctrl.days" ng-click="ctrl.selectDate(day)">{{ day.day }}</div>' +
                 '</div>' +
                 '</div>' +
                 '</div></script>'
@@ -70,7 +70,7 @@
             ctrl.dayNames = [];
             ctrl.calendarTitle = getMomentDate($scope.date).format('MMMM YYYY');
             ctrl.tempDate = getMomentDate($scope.date); // used for keeping track while cycling through months
-            ctrl.calendarPosition = 'below';
+            ctrl.calendarPosition = 'ng-utc_below';
 
             var ngModel = $element.controller('ngModel');
             ngModel.$formatters.unshift(function (modelValue) {
@@ -88,9 +88,9 @@
 
                 for (var i = firstWeekDay; i <= moment.utc(momentDate).endOf('M').date(); i++) {
                     if (i > 0) {
-                        ctrl.days.push({ day: i, month: month, year: year, enabled: 'enabled', selected: moment.utc($scope.date, ctrl.format).isSame(moment.utc(year + '-' + month + '-' + i, 'YYYY-M-D'), 'day') ? 'selected' : 'unselected' });
+                        ctrl.days.push({ day: i, month: month, year: year, enabled: 'ng-utc_enabled', selected: moment.utc($scope.date, ctrl.format).isSame(moment.utc(year + '-' + month + '-' + i, 'YYYY-M-D'), 'day') ? 'ng-utc_selected' : 'ng-utc_unselected' });
                     } else {
-                        ctrl.days.push({ day: lastMonth.endOf('M').date() - (0 - i), month: lastMonth.month() + 1, year: lastMonth.year(), enabled: 'disabled', selected: 'unselected' });
+                        ctrl.days.push({ day: lastMonth.endOf('M').date() - (0 - i), month: lastMonth.month() + 1, year: lastMonth.year(), enabled: 'ng-utc_disabled', selected: 'ng-utc_unselected' });
                     }
                 }
             };
@@ -134,14 +134,19 @@
 
             ctrl.openCalendar = function (event) {
                 var rect = event.target.getBoundingClientRect();
-                ctrl.calendarPosition = window.innerHeight - rect.bottom < 250 ? 'above' : 'below';
+                ctrl.calendarPosition = window.innerHeight - rect.bottom < 250 ? 'ng-utc_above' : 'ng-utc_below';
                 ctrl.showCalendar = true;
                 generateCalendar(getMomentDate($scope.date));
             };
 
             ctrl.closeCalendar = function () {
                 $timeout(function () {
-                    ctrl.showCalendar = document.activeElement.className.includes('calendar-popup');
+                    ctrl.showCalendar = !!(document.activeElement.className.includes('ng-utc_calendar-popup') ||
+                        document.activeElement.className.includes('ng-utc_next') ||
+                        document.activeElement.className.includes('ng-utc_prev') ||
+                        document.activeElement.className.includes('ng-utc_today') ||
+                        document.activeElement.className.includes('ng-utc_day')
+                    );
                     if (typeof $scope.date === 'string') {
                         $scope.date = moment.utc($scope.date, ctrl.format).toDate();
                     }
@@ -170,10 +175,10 @@
                 ctrl.showCalendar = false;
             };
 
-            ctrl.selectToday = function (event) {
+            ctrl.selectToday = function () {
                 var today = moment.utc();
-                var date = { day: today.date(), month: today.month() + 1, year: today.year(), enabled: 'enabled', selected: 'selected' };
-                ctrl.selectDate(event, date);
+                var date = { day: today.date(), month: today.month() + 1, year: today.year(), enabled: 'ng-utc_enabled', selected: 'ng-utc_selected' };
+                ctrl.selectDate(date);
             };
 
             ctrl.keydown = function ($event, element) {

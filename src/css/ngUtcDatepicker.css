@@ -1,10 +1,10 @@
-.date-picker {
+.ng-utc_datepicker {
     position: relative;
 }
-.date-picker .calendar-icon {
+.ng-utc_datepicker .ng-utc_calendar-icon {
     cursor: pointer;
 }
-.date-picker .calendar-popup {
+.ng-utc_datepicker .ng-utc_calendar-popup {
     position: absolute;
     left: 0;
     z-index: 1000;
@@ -12,13 +12,13 @@
     opacity: 0.9;
     border-left: 1px solid #888;
 }
-.date-picker .calendar-popup.above {
-    top: -248px;
+.ng-utc_datepicker .ng-utc_calendar-popup.ng-utc_above {
+    top: -228px;
 }
-.date-picker .calendar-popup.below {
+.ng-utc_datepicker .ng-utc_calendar-popup.ng-utc_below {
     top: 8px;
 }
-.date-picker .calendar-popup .calendar-controls {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar-controls {
     box-sizing: border-box;
     background: #ccc;
     width: 100%;
@@ -30,27 +30,28 @@
     display: flex;
     justify-content: space-between;
 }
-.date-picker .calendar-popup .calendar-controls .prev,
-.date-picker .calendar-popup .calendar-controls .next,
-.date-picker .calendar-popup .calendar-controls .today {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar-controls .ng-utc_prev,
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar-controls .ng-utc_next,
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar-controls .ng-utc_today {
     cursor: pointer;
     padding: 0 7px;
 }
-.date-picker .calendar-popup .day-names {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_day-names {
     background: #555;
     color: #fff;
     display: flex;
 }
-.date-picker .calendar-popup .day-names .name {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_day-names .ng-utc_name {
     width: 35px;
     height: 15px;
     padding: 1px;
     text-align: center;
 }
-.date-picker .calendar-popup .calendar {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar {
     background: #fff;
+    width: 245px;
 }
-.date-picker .calendar-popup .calendar .day {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_day {
     box-sizing: border-box;
     width: 35px;
     height: 35px;
@@ -62,19 +63,19 @@
     color: #000;
     background: #fff;
 }
-.date-picker .calendar-popup .calendar .day:hover {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_day:hover {
     background: #ccc;
     color: #000;
     cursor: pointer;
 }
-.date-picker .calendar-popup .calendar .day:last-child {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_day:last-child {
     border-right: 1px solid #888;
 }
-.date-picker .calendar-popup .calendar .selected {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_selected {
     background: #42a5f5;
     color: #fff;
 }
-.date-picker .calendar-popup .calendar .disabled {
+.ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_disabled {
     background: #ddd;
     color: #555;
 }
