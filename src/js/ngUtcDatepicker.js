@@ -124,7 +124,7 @@
                     };
                     triggerEl.onkeydown = function (event) {
                         $timeout(function () {
-                            ctrl.keydown(event);
+                            ctrl.keydown(event, triggerEl);
                         });
                     };
                 }
@@ -133,10 +133,12 @@
             initialize();
 
             ctrl.openCalendar = function (event) {
-                var rect = event.target.getBoundingClientRect();
-                ctrl.calendarPosition = window.innerHeight - rect.bottom < 250 ? 'ng-utc_above' : 'ng-utc_below';
-                ctrl.showCalendar = true;
-                generateCalendar(getMomentDate($scope.date));
+                $timeout(function () {
+                    var rect = event.target.getBoundingClientRect();
+                    ctrl.calendarPosition = window.innerHeight - rect.bottom < 250 ? 'ng-utc_above' : 'ng-utc_below';
+                    ctrl.showCalendar = true;
+                    generateCalendar(getMomentDate($scope.date));
+                });
             };
 
             ctrl.closeCalendar = function () {
