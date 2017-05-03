@@ -61,6 +61,9 @@
             var ctrl = this;
 
             var getMomentDate = function (date) {
+                if (!moment.utc(date, ctrl.format).isValid()) {
+                    date = moment.utc().toDate();
+                }
                 return typeof date === 'object' ? moment.utc(date.toISOString()) : moment.utc(date);
             };
 
@@ -74,7 +77,11 @@
 
             var ngModel = $element.controller('ngModel');
             ngModel.$formatters.unshift(function (modelValue) {
-                return moment.utc(new Date(modelValue).toISOString()).format(ctrl.format);
+                try {
+                    return moment.utc(new Date(modelValue).toISOString()).format(ctrl.format);
+                } catch (e) {
+                    return '';
+                }
             });
 
             var generateCalendar = function (date) {
