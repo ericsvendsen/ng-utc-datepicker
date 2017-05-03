@@ -95,7 +95,7 @@
         button {
             display: inline-block;
             padding: 2px 4px;
-            margin-bottom: 0;
+            margin: 0 5px;
             font-size: 14px;
             font-weight: 400;
             line-height: 1.42857143;
@@ -227,8 +227,8 @@
         <h3>Datepicker with trigger element</h3>
         <span id="icon" class="fa fa-calendar"></span>
         <input ng-utc-datepicker data-trigger="icon" ng-model="vm.date"/>
-        <pre><code>&lt;button id="icon"&gt;&lt;i class="fa fa-calendar"&gt;&lt;/i&gt;&lt;/button&gt;<br />&lt;input ng-utc-datepicker
-        data-trigger="btn-icon"
+        <pre><code>&lt;span id="icon" class="fa fa-calendar"&gt;&lt;/span&gt;<br />&lt;input ng-utc-datepicker
+        data-trigger="icon"
         ng-model="vm.date"/&gt;</code></pre>
         <hr/>
         <h3>Datepicker with trigger element and custom format</h3>
