@@ -2,17 +2,247 @@
 <html>
 <head>
     <title>Angular UTC Datepicker</title>
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="src/css/ngUtcDatepicker.css"/>
+    <style type="text/css">
+        body {
+            background-color: #fff;
+            padding: 50px;
+            font: 14px/1.5 "Roboto", sans-serif;
+            color: #727272;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #222;
+            margin: 0 0 20px;
+        }
+
+        p, ul, ol, table, pre, dl {
+            margin: 0 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #393939;
+        }
+
+        h3, h4, h5, h6 {
+            color: #494949;
+        }
+
+        a {
+            color: #267CB9;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            color: #069;
+            font-weight: bold;
+        }
+
+        a small {
+            font-size: 11px;
+            color: #777;
+            margin-top: -0.3em;
+            display: block;
+        }
+
+        a:hover small {
+            color: #777;
+        }
+
+        .wrapper {
+            width: 860px;
+            margin: 0 auto;
+        }
+
+        code, pre {
+            font-family: Courier New, monospace;
+            color: #333;
+            font-size: 12px;
+        }
+
+        pre {
+            padding: 8px 15px;
+            margin: 20px 0;
+            background: #f8f8f8;
+            border-radius: 5px;
+            border: 1px solid #e5e5e5;
+            overflow-x: auto;
+        }
+
+        input {
+            height: 14px;
+            padding: 6px 12px;
+            line-height: 1.42857143;
+            font-size: 12px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 2px 4px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: #ddd;
+        }
+
+        header {
+            width: 270px;
+            float: left;
+            position: fixed;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        header ul {
+            list-style: none;
+            padding: 0;
+            width: 270px;
+        }
+
+        section {
+            width: 500px;
+            float: right;
+            padding-bottom: 50px;
+        }
+
+        hr {
+            border: 0;
+            background: #e5e5e5;
+            height: 1px;
+            margin: 0 0 20px;
+        }
+
+        @media print, screen and (max-width: 960px) {
+            div.wrapper {
+                width: auto;
+                margin: 0;
+            }
+
+            header, section {
+                float: none;
+                position: static;
+                width: auto;
+            }
+
+            header {
+                padding-right: 320px;
+            }
+
+            section {
+                border: 1px solid #e5e5e5;
+                border-width: 1px 0;
+                padding: 20px 0;
+                margin: 0 0 20px;
+            }
+
+            header a small {
+                display: inline;
+            }
+
+            header ul {
+                position: absolute;
+                right: 50px;
+                top: 52px;
+            }
+        }
+        @media print, screen and (max-width: 720px) {
+            body {
+                word-wrap: break-word;
+            }
+
+            header {
+                padding: 0;
+            }
+
+            header ul, header p.view {
+                position: static;
+            }
+
+            pre, code {
+                word-wrap: normal;
+            }
+        }
+        @media print, screen and (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            header ul {
+                width: 99%;
+            }
+
+            header li, header ul li + li + li {
+                width: 33%;
+            }
+        }
+        @media print {
+            body {
+                padding: 0.4in;
+                font-size: 12pt;
+                color: #444;
+            }
+        }
+    </style>
 </head>
 <body ng-app="app" ng-strict-di>
-<div ng-controller="ctrl as vm">
-    <span id="icon" class="fa fa-calendar"></span>
-    <input ng-utc-datepicker data-trigger="icon" ng-model="vm.date"/>
+<div class="wrapper" ng-controller="ctrl as vm">
+    <header>
+        <h1>Angular UTC Datepicker</h1>
+        <ul>
+            <li>Works with Angular 1.x</li>
+            <li>Doesn't require jQuery UI, Bootstrap, etc.</li>
+            <li>Only does UTC</li>
+        </ul>
+        <p>The calendar will display above the input if it's close to the bottom of the page, and can be closed by clicking elsewhere or pressing the ESC key.</p>
+    </header>
+    <section>
+        <h2>Demos</h2>
+        <h3>Basic datepicker</h3>
+        <input ng-utc-datepicker ng-model="vm.date"/>
+        <pre><code>&lt;input ng-utc-datepicker ng-model="vm.date"/&gt;</code></pre>
+        <hr/>
+        <h3>Datepicker with trigger element</h3>
+        <span id="icon" class="fa fa-calendar"></span>
+        <input ng-utc-datepicker data-trigger="icon" ng-model="vm.date"/>
+        <pre><code>&lt;button id="icon"&gt;&lt;i class="fa fa-calendar"&gt;&lt;/i&gt;&lt;/button&gt;<br />&lt;input ng-utc-datepicker
+        data-trigger="btn-icon"
+        ng-model="vm.date"/&gt;</code></pre>
+        <hr/>
+        <h3>Datepicker with trigger element and custom format</h3>
+        <input ng-utc-datepicker data-trigger="btn-text" data-format="MM/DD/YYYY HH:mm:ss" ng-model="vm.date"/>
+        <button id="btn-text">Show Calendar</button>
+        <pre><code>&lt;input ng-utc-datepicker
+        data-trigger="btn-text"
+        data-format="MM/DD/YYYY HH:mm:ss"
+        ng-model="vm.date"/&gt;<br />&lt;button id="btn-text"&gt;Show Calendar&lt;/button&gt;</code></pre>
+    </section>
 </div>
 
-<script type="text/javascript" src="node_modules/moment/moment.js"></script>
-<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript" src="src/js/ngUtcDatepicker.js"></script>
 <script type="text/javascript">
     (function (angular) {

@@ -52,7 +52,7 @@
                 '</div>' +
                 '<div class="ng-utc_calendar">' +
                 '<div class="ng-utc_day {{ day.selected }} {{ day.enabled }}" ng-repeat="day in ctrl.days" ng-click="ctrl.selectDate(day)">{{ day.day }}</div>' +
-                '</div>' +
+                '<div class="ng-utc_clear"></div></div>' +
                 '</div>' +
                 '</div></script>'
             };
@@ -80,16 +80,30 @@
             var generateCalendar = function (date) {
                 ctrl.days = [];
 
-                var momentDate = typeof date === 'string' ? moment.utc(date, ctrl.format) : moment.utc(date),
+                var isISOString = moment.utc(date, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]').toISOString() === date,
+                    momentDate = isISOString ? moment.utc(date) : moment.utc(date, ctrl.format),
                     lastMonth = moment.utc(momentDate).subtract(1, 'M'),
+                    nextMonth = moment.utc(momentDate).add(1, 'M'),
                     month = moment.utc(momentDate).month() + 1,
                     year = moment.utc(momentDate).year(),
-                    firstWeekDay = 1 - moment.utc(momentDate).startOf('M').isoWeekday();
+                    firstWeekDay = 1 - moment.utc(momentDate).startOf('M').isoWeekday(),
+                    totalDays = (42 + firstWeekDay) - 1; // 7 columns X 6 rows
 
-                for (var i = firstWeekDay; i <= moment.utc(momentDate).endOf('M').date(); i++) {
-                    if (i > 0) {
-                        ctrl.days.push({ day: i, month: month, year: year, enabled: 'ng-utc_enabled', selected: moment.utc($scope.date, ctrl.format).isSame(moment.utc(year + '-' + month + '-' + i, 'YYYY-M-D'), 'day') ? 'ng-utc_selected' : 'ng-utc_unselected' });
+                for (var i = firstWeekDay; i <= totalDays; i++) {
+                    if (i > 0 && i <= moment.utc(momentDate).endOf('M').date()) {
+                        // current month
+                        ctrl.days.push({
+                            day: i,
+                            month: month,
+                            year: year,
+                            enabled: 'ng-utc_enabled',
+                            selected: moment.utc($scope.date, ctrl.format).isSame(moment.utc(year + '-' + month + '-' + i, 'YYYY-M-D'), 'day') ? 'ng-utc_selected' : 'ng-utc_unselected'
+                        });
+                    } else if (i > moment.utc(momentDate).endOf('M').date()) {
+                        // next month
+                        ctrl.days.push({ day: i - momentDate.endOf('M').date(), month: nextMonth.month() + 1, year: nextMonth.year(), enabled: 'ng-utc_disabled', selected: 'ng-utc_unselected' });
                     } else {
+                        // last month
                         ctrl.days.push({ day: lastMonth.endOf('M').date() - (0 - i), month: lastMonth.month() + 1, year: lastMonth.year(), enabled: 'ng-utc_disabled', selected: 'ng-utc_unselected' });
                     }
                 }

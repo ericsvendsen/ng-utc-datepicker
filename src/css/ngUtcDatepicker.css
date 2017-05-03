@@ -1,22 +1,22 @@
 .ng-utc_datepicker {
-    position: relative;
+    position: absolute;
+    top: auto;
+    left: auto;
+    z-index: 1000;
 }
 .ng-utc_datepicker .ng-utc_calendar-icon {
     cursor: pointer;
 }
 .ng-utc_datepicker .ng-utc_calendar-popup {
-    position: absolute;
-    left: 0;
-    z-index: 1000;
     width: 245px;
     opacity: 0.9;
     border-left: 1px solid #888;
 }
 .ng-utc_datepicker .ng-utc_calendar-popup.ng-utc_above {
-    top: -228px;
+    margin-top: -293px;
 }
 .ng-utc_datepicker .ng-utc_calendar-popup.ng-utc_below {
-    top: 8px;
+    margin-top: 5px;
 }
 .ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar-controls {
     box-sizing: border-box;
@@ -78,4 +78,7 @@
 .ng-utc_datepicker .ng-utc_calendar-popup .ng-utc_calendar .ng-utc_disabled {
     background: #ddd;
     color: #555;
+}
+.ng-utc_clear {
+    clear: both;
 }
