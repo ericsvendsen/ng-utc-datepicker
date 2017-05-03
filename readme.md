@@ -12,6 +12,8 @@ A simple Angular 1.x datepicker directive that exclusively uses UTC.
 * Add `ng-utc-datepicker` to an `input` tag
 * `format` option, for formatting date (and time, if necessary); defaults to `'YYYY-MM-DD'`. Uses [Moment](http://momentjs.com/docs/#/displaying/format/) formatting.
 * `trigger` option, for triggering the calendar with an external element such as a button or icon. Must be an element ID.
+## Live Demo ##
+[https://ericsvendsen.github.io/ng-utc-datepicker/](https://ericsvendsen.github.io/ng-utc-datepicker/)
 ## Examples
 ```
 <input ng-utc-datepicker ng-model="vm.date"/>
