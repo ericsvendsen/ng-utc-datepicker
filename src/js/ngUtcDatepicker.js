@@ -173,6 +173,8 @@
                     if (typeof $scope.date === 'string') {
                         $scope.date = moment.utc($scope.date, ctrl.format).toDate();
                     }
+                    ctrl.calendarTitle = getMomentDate($scope.date).format('MMMM YYYY');
+                    ctrl.tempDate = getMomentDate($scope.date); // used for keeping track while cycling through months
                 });
             };
 
